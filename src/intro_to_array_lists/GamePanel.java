@@ -1,6 +1,6 @@
 package intro_to_array_lists;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -10,12 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
-	
+	GameObject object;
 	Timer time;
 	@Override
+	
 
 	public void paintComponent(Graphics g){
-		g.fillRect(10, 10, 100, 100);
+		object.draw(g);
 	                
 
 	        }
@@ -24,6 +25,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
  public GamePanel() {
 	 time = new Timer(1000/60, this);
+	 object = new GameObject(10, 10, 100, 100);
  }
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -39,7 +41,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("hi");
+		System.out.println("PRINT");
 	}
 
 
@@ -47,7 +49,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("hi");
+		System.out.println("PRINT");
 	}
 
 
@@ -55,7 +57,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("hi");
+		System.out.println("PRINT");
 	}
 	
 }

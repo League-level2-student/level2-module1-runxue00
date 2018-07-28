@@ -1,6 +1,6 @@
 package intro_to_array_lists;
 
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.JFrame;
 
@@ -29,4 +29,3 @@ public void setup() {
 }
 
 
-// LEAGUE INVADERS PART 4 INSTRUCTION 4
