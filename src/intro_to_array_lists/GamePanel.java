@@ -22,26 +22,41 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	Font titleFont;
 	
+	Font buttonFont;
+	
 	int x;
 	
     int y;
+    
+    Rocketship ship = new Rocketship(250, 700, 50, 50);
 	
 	public void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-		g.setFont(titleFont);
-		g.drawString("text", 200, 200);
 		g.setColor(Color.cyan);
+		g.setFont(titleFont);
+		g.drawString("LEAGUE INVADERS", 80, 100);
+		g.setFont(buttonFont);
+		g.drawString("Press ENTER to start", 120, 300);
+		g.drawString("Press SPACE for instructions", 80, 600);
+		
 	}
 	
 public void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	ship.draw(g);
 	}
 
 public void drawEndState(Graphics g) {
 	g.setColor(Color.RED);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	g.setColor(Color.black);
+	g.setFont(titleFont);
+	g.drawString("GAME OVER", 120, 100);
+	g.setFont(buttonFont);
+	g.drawString("You killed 0 enemies", 130, 300);
+	g.drawString("Press ENTER to restart", 120, 600);
 }
 
 	public void paintComponent(Graphics g){
@@ -67,7 +82,7 @@ public void updateMenuState() {
 }
 
 public void updateGameState() {
-	
+	ship.update();
 }
 
 public void updateEndState() {
@@ -79,7 +94,8 @@ public void updateEndState() {
 	 this.x = x;
 	 this.y = y;
 	 time = new Timer(1000/60, this);
-	 titleFont = new Font("Arial", Font.PLAIN, 48);
+	 titleFont = new Font("Arial", Font.PLAIN, 38);
+	 buttonFont = new Font("Arial", Font.PLAIN, 23);
  }
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -120,7 +136,9 @@ public void updateEndState() {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 		currentState++;
+		}
 		if(currentState > END_STATE){
 
             currentState = MENU_STATE;
@@ -144,6 +162,6 @@ public void updateEndState() {
 
 
 
-// PART 7 STEP 4
+
 
 
