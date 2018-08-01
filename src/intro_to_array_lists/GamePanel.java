@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
     int y;
     
-    Rocketship ship = new Rocketship(250, 700, 50, 50);
+    Rocketship ship = new Rocketship(250, 700, 50, 50, 5);
 	
 	public void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
@@ -142,8 +142,20 @@ public void updateEndState() {
 		if(currentState > END_STATE){
 
             currentState = MENU_STATE;
-
     }
+		if(e.getKeyCode() == KeyEvent.VK_UP) {
+	    	 ship.setUp(true);
+	     }
+	     if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+	    	 ship.setDown(true);
+	     }
+	     if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	    	 ship.setRight(true);
+	     }
+	     if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+	    	 ship.setLeft(true);
+	     }
+		
 		
 	}
 
@@ -152,7 +164,18 @@ public void updateEndState() {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getKeyCode() == KeyEvent.VK_UP) {
+	    	 ship.setUp(false);
+	     }
+	     if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+	    	 ship.setDown(false);
+	     }
+	     if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	    	 ship.setRight(false);
+	     }
+	     if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+	    	 ship.setLeft(false);
+	     }
 	}
 	
 }

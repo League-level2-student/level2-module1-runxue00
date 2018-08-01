@@ -39,16 +39,16 @@ public class Rocketship extends GameObject {
 	
 	public void update() {
 		if(up == true) {
-			y--;
+			y-=speed;
 		}
 		if(down == true) {
-			y++;
+			y+=speed;
 		}
 		if(right == true) {
-			x++;
+			x+=speed;
 		}
 		if(left == true) {
-			x--;
+			x-=speed;
 		}
 	}
 	
@@ -58,8 +58,8 @@ public class Rocketship extends GameObject {
         g.fillRect(x, y, width, height);
 	}
 
-	public Rocketship(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public Rocketship(int x, int y, int width, int height, int speed) {
+		super(x, y, width, height, speed);
 		// TODO Auto-generated constructor stub
 	} 
 	
