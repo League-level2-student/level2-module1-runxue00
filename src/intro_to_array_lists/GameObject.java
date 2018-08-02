@@ -8,6 +8,7 @@ public class GameObject {
      int width;
      int height;
      int speed;
+     boolean isAlive = true;
      
      public GameObject(int x, int y, int width, int height, int speed) {
     	 this.x = x;

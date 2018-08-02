@@ -13,7 +13,7 @@ public void update() {
 	rocket.update();
 }
 public void draw(Graphics g) {
-	
+	rocket.draw(g);
 }
 }
 
@@ -22,4 +22,5 @@ public void draw(Graphics g) {
 
 
 
-// PART 9 STEP 7
+
+// PART 10 STEP 8
