@@ -86,7 +86,7 @@ public void updateMenuState() {
 
 public void updateGameState() {
 	manager.update();
-	
+	manager.manageEnemies();
 }
 
 public void updateEndState() {
@@ -158,6 +158,10 @@ public void updateEndState() {
 	     }
 	     if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 	    	 ship.setLeft(true);
+	     }
+	     
+	     if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+	    	 manager.addProjectile(new Projectile(ship.x+25, ship.y, 10, 10, 10));
 	     }
 		
 		
