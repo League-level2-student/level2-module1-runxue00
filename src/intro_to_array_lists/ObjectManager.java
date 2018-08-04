@@ -47,7 +47,29 @@ public void draw(Graphics g) {
 		a.draw(g);
 	}
 }
+public void checkCollision() {
+	for(Alien a : aliens){
 
+        if(rocket.collisionBox.intersects(a.collisionBox)){
+
+                rocket.isAlive = false;
+
+        }
+
+}
+	for(Projectile p : projectiles){
+for (Alien a : aliens) {
+	if(a.collisionBox.intersects(p.collisionBox)){
+
+        p.isAlive = false;
+        a.isAlive = false;
+
+}
+}
+        
+
+}
+}
 public void manageEnemies(){
     if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
             addAlien(new Alien(new Random().nextInt(LeagueInvaders.WIDTH), 0, 50, 50, 50));
@@ -68,6 +90,9 @@ public void purgeObjects() {
 		if(a.isAlive == false) {
 			aliens.remove(i);
 		}
+	}
+	if(rocket.isAlive == false) {
+		GamePanel.currentState = GamePanel.END_STATE;
 	}
 	
 }
