@@ -10,6 +10,14 @@ ArrayList<Projectile> projectiles= new ArrayList<Projectile>();
 ArrayList<Alien> aliens= new ArrayList<Alien>();
 long enemyTimer = 0;
 int enemySpawnTime = 3000;
+int score = 0;
+
+public int getScore() {
+	return this.score;
+	
+}
+
+
 
 public ObjectManager(Rocketship rocket) {
 	this.rocket = rocket;
@@ -63,7 +71,7 @@ for (Alien a : aliens) {
 
         p.isAlive = false;
         a.isAlive = false;
-
+        score+=1;
 }
 }
         

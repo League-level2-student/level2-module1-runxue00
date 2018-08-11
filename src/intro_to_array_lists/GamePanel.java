@@ -58,8 +58,9 @@ public void drawEndState(Graphics g) {
 	g.setFont(titleFont);
 	g.drawString("GAME OVER", 120, 100);
 	g.setFont(buttonFont);
-	g.drawString("You killed 0 enemies", 130, 300);
+	g.drawString("You killed " + manager.getScore() + " enemies", 130, 300);
 	g.drawString("Press ENTER to restart", 120, 600);
+	
 }
 
 	public void paintComponent(Graphics g){
@@ -166,6 +167,11 @@ public void updateEndState() {
 	    	 manager.addProjectile(new Projectile(ship.x+25, ship.y, 10, 10, 10));
 	     }
 		
+	     if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+	    	 if(currentState == END_STATE) {
+	    		 this.ship = ship;
+	    	 }
+	     }
 		
 	}
 
@@ -189,6 +195,10 @@ public void updateEndState() {
 	}
 	
 }
+
+
+
+//PART 13 STEP 2
 
 
 
