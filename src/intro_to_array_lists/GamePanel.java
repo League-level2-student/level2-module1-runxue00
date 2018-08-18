@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -28,6 +31,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
     int y;
     
+    public static BufferedImage alienImg;
+
+    public static BufferedImage rocketImg;
+
+    public static BufferedImage bulletImg;
+
+    public static BufferedImage spaceImg;
+    
     Rocketship ship = new Rocketship(250, 700, 50, 50, 5);
     
     ObjectManager manager = new ObjectManager(ship);
@@ -45,8 +56,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 public void drawGameState(Graphics g) {
-	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	g.drawImage(GamePanel.spaceImg, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
 	manager.draw(g);
     
 	}
@@ -98,6 +109,23 @@ public void updateEndState() {
 
 	
  public GamePanel() {
+	 try {
+
+         alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+
+         rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+
+         bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+
+         spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+
+ } catch (IOException e) {
+
+         // TODO Auto-generated catch block
+
+         e.printStackTrace();
+
+ }
 	 this.x = x;
 	 this.y = y;
 	 time = new Timer(1000/60, this);
@@ -144,7 +172,11 @@ public void updateEndState() {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-		currentState++;
+		
+		if(currentState==END_STATE) {
+			 ship = new Rocketship(250, 700, 50, 50, 5);
+			 manager = new ObjectManager(ship);
+		}currentState++;
 		}
 		if(currentState > END_STATE){
 
@@ -198,7 +230,7 @@ public void updateEndState() {
 
 
 
-//PART 13 STEP 2
+
 
 
 
